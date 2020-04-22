@@ -18,7 +18,7 @@ const Search = () => {
 
   return (
     <div>
-      <SearchBox onSubmit={setSearchQuery} />
+      <SearchBox onSubmit={setSearchQuery} fetching={result.fetching} />
       <Result result={result} />
     </div>
   )

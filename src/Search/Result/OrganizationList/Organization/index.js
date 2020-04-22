@@ -36,7 +36,9 @@ const Organization = (props) => {
 
   return (
     <div className="org">
-      <img className="avatarImg" src={avatarUrl} alt="organization avatar" />
+      <OpenInNew url={url}>
+        <img className="avatarImg" src={avatarUrl} alt="organization avatar" />
+      </OpenInNew>
       <div className="info1">
         <p className="primary name"><OpenInNew url={url}>{name} <OpenInNewIcon /></OpenInNew></p>
         <p className="secondary description">{description || "[no description]"}</p>
