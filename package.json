@@ -9,10 +9,12 @@
     "@testing-library/user-event": "^7.2.1",
     "classnames": "^2.2.6",
     "graphql": "^15.0.0",
+    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "urql": "^1.9.7"
+    "urql": "^1.9.7",
+    "use-debounce": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
