@@ -1,8 +1,9 @@
 import React from 'react'
 
-import './index.css'
+import { OpenInNew } from '../../../../components/ExtrenalLink/OpenInNew'
+import { OpenInNewIcon } from '../../../../components/ExtrenalLink/OpenInNewIcon'
 
-import openInNewSvg from './open_in_new-24px.svg'
+import './index.css'
 
 const urlToReadable = (url) => {
   const splitUrl = url.split('//')
@@ -13,24 +14,6 @@ const urlToReadable = (url) => {
 
   return splitUrl[1]
 }
-
-const OpenInNew = ({ url, children, noLinkStyle = true }) => {
-  return (
-    <a
-      className={noLinkStyle ? "noDefaultLinkStyle" : null}
-      target="_blank"
-      href={url}
-      rel="noopener noreferrer"
-     >{children}</a>
-  )
-}
-
-const OpenInNewIcon = () => {
-  return (
-    <img className="openInNewIcon" src={openInNewSvg} alt="open_in_new--icon" />
-  )
-}
-
 const Organization = (props) => {
   const { name, avatarUrl, description, location, url, websiteUrl } = props
 
