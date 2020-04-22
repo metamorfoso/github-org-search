@@ -1,6 +1,7 @@
 App for searching organizations on Github.
 
 ### TODO
+- OAuth authentication for each user (I don't wanna deal with my precious token...)
 - results metadata
   - count
   - showing N of T
