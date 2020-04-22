@@ -25,9 +25,7 @@ function App() {
         <header className="App-header">
           <h1>Github Org Search</h1>
         </header>
-        <div className="main">
-          <Search />
-        </div>
+        <Search />
       </div>
     </Provider>
   );

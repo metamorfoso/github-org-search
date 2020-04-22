@@ -1,6 +1,9 @@
 import React from 'react'
 
 import { OrganizationList } from './OrganizationList'
+import { OrganizationsLoading } from './OrganizationsLoading'
+
+import './index.css'
 
 const Result = ({ result }) => {
   const { data, fetching, error } = result
@@ -10,12 +13,20 @@ const Result = ({ result }) => {
   }
 
   if (fetching) {
-    return (<div>Loading...</div>)
+    return (
+      <div className="results">
+        <OrganizationsLoading />
+      </div>
+    )
   }
 
   const { edges } = data.search
   const organizations = edges.map((edge) => edge.node)
-  return <OrganizationList organizations={organizations} />
+  return (
+    <div className="results">
+      <OrganizationList organizations={organizations} />
+    </div>
+  )
 
 }
 
