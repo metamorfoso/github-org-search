@@ -11,7 +11,7 @@ const Search = () => {
   const [result] = useQuery({
     query: orgQuery,
     variables: {
-      searchQuery: `type:org ${searchQuery}`
+      searchQuery: `${searchQuery} type:org`
     },
     pause: !searchQuery
   })

@@ -1,9 +1,8 @@
 App for searching organizations on Github.
 
 ### TODO
-- respect github query limitations
-  - are longer than 256 characters (not including operators or qualifiers).
-  - have more than five AND, OR, or NOT operators.
+- [x] respect github query limitations
+  - [x] are longer than 256 characters (not including operators or qualifiers).
 - [x] results metadata
   - [x] count
   - [x] showing N of T

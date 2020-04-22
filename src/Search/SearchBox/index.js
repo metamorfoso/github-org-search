@@ -10,7 +10,11 @@ const SearchBox = ({ onSubmit, fetching }) => {
   }
 
   const [query, setQuery] = useState('')
-  const onChange = (event) => setQuery(event.target.value)
+  const onChange = (event) => {
+    if (event.target.value.length < 240) {
+      return setQuery(event.target.value)
+    }
+  }
 
   const submitButtonClassnames = classnames([
     'searchFormElement',

@@ -28,11 +28,10 @@ const Result = ({ result }) => {
     <div className="results">
       <div className="resultsMeta">
         Showing <span className="bold">{organizations.length}</span> of <span className="bold">{userCount}</span> results on Github.
-       </div>
+      </div>
       <OrganizationList organizations={organizations} />
     </div>
   )
-
 }
 
 export {
