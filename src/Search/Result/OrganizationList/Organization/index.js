@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 
 import './index.css'
 
@@ -21,6 +20,7 @@ const OpenInNew = ({ url, children, noLinkStyle = true }) => {
       className={noLinkStyle ? "noDefaultLinkStyle" : null}
       target="_blank"
       href={url}
+      rel="noopener noreferrer"
      >{children}</a>
   )
 }
@@ -32,7 +32,7 @@ const OpenInNewIcon = () => {
 }
 
 const Organization = (props) => {
-  const { name, avatarUrl, description, isVerified, location, url, websiteUrl } = props
+  const { name, avatarUrl, description, location, url, websiteUrl } = props
 
   return (
     <div className="org">
