@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classnames from 'classnames'
 
 import './index.css'
 
@@ -16,16 +15,11 @@ const SearchBox = ({ onSubmit, fetching }) => {
     }
   }
 
-  const submitButtonClassnames = classnames([
-    'searchFormElement',
-    'searchSubmit',
-    fetching ? 'disabled' : ''
-  ])
   return (
     <div className="searchBox">
       <form className="searchForm" onSubmit={onSubmitNoDefault(query)}>
         <input className="searchFormElement searchInput" type="text" onChange={onChange} value={query} />
-        <button disabled={fetching} className={submitButtonClassnames} onClick={onSubmitNoDefault(query)}>Search</button>
+        <button disabled={fetching} className="searchFormElement searchSubmit" onClick={onSubmitNoDefault(query)}>Search</button>
       </form>
     </div>
   )

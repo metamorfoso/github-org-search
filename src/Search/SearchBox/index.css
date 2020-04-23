@@ -29,12 +29,11 @@
   cursor: pointer;
   color: white;
   font-weight: 600;
-  background-color: #009500;
-}
-
-.searchSubmit:hover{
   background-color: #006500;
 }
-.disabled {
+.searchSubmit:hover{
+  background-color: #009500;
+}
+.searchSubmit:disabled {
   background-color: grey;
 }

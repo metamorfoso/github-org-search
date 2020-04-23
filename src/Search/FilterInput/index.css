@@ -1,10 +1,18 @@
 .filterButton {
   width: 300px;
+  height: 30px;
   margin-bottom: 25px;
   cursor: pointer;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 3px;
   font-size: 16px;
+  background-color: whitesmoke
+}
+.filterButton:hover {
+  background-color: white
+}
+.filterButton:disabled {
+  background-color: grey;
 }
 
 .filterToggle {

@@ -2,25 +2,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px 0;
+  margin: 30px 0;
 }
 
 .paginationControls {
   width: 300px;
-  margin-top: 25px;
-
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 }
 
 .paginationButton {
   width: 145px;
+  height: 30px;
   cursor: pointer;
   box-sizing: border-box;
   font-weight: 700;
   border: 1px solid grey;
-  border-radius: 2px;
+  border-radius: 3px;
   font-size: 16px;
+  color: white;
+  background-color: #545d8e;
+}
+.paginationButton:hover {
+  background-color: #7986cb;
+}
+.paginationButton:disabled {
+  background-color: lightgray;
 }
 
 .bold {
