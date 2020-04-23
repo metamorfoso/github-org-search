@@ -1,4 +1,5 @@
 import React, {useState } from 'react'
+import classnames from 'classnames'
 
 import './index.css'
 
@@ -16,9 +17,14 @@ const FilterInput = ({ filters, setFilters }) => {
     website: event.target.value
   })
 
+  const clearFilters = () => setFilters({
+    location: '',
+    website: ''
+  })
+
   return (
     <div className="filters">
-      <button className="filterToggle" onClick={toggleShowFilterInput}>{showFilterInput ? "Hide Filters" : "Filter This Set"}</button>
+      <button className="filterButton filterToggle" onClick={toggleShowFilterInput}>{showFilterInput ? "Hide Filters" : "Filter This Set"}</button>
       <div className={showFilterInput ? "filters" : "hide"}>
         <div className="filter">
           <label className="filterLabel" htmlFor="locationFilter">Location</label>
@@ -29,6 +35,7 @@ const FilterInput = ({ filters, setFilters }) => {
           <input className="filterInput" name="websiteFilter" type="text" value={filters.website} onChange={onWebsiteChange} />
         </div>
       </div>
+      <button className={classnames(['filterButton', 'clearFilters', !showFilterInput ? 'hide' : ''])} onClick={clearFilters}>Clear Filters</button>
     </div>
   )
 }

@@ -34,8 +34,8 @@ const Search = () => {
       <DontRenderIfNoResult result={result}>
         <ResultsMetainfo result={result} />
         <FilterInput filters={filters} setFilters={setFilters} />
-        <Result result={result} filters={debouncedFilters} />
       </DontRenderIfNoResult>
+      <Result result={result} filters={debouncedFilters} />
     </div>
   )
 }
