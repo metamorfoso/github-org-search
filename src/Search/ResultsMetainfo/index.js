@@ -2,8 +2,13 @@ import React from 'react'
 
 import './index.css'
 
-const calcStartEnd = (page) => {
-  if (page === 1) return ({ start: 1, end: 100 })
+const calcStartEnd = (page, count) => {
+  if (page === 1) {
+    return {
+      start: 1,
+      end: count < 100 ? count : 100
+    }
+  }
 
   return {
     start: (page - 1) * 100 + 1,
@@ -14,7 +19,7 @@ const calcStartEnd = (page) => {
 const ResultsMetainfo = ({ result, page, setPage, maxPages }) => {
   const { userCount: count } = result.data.search
 
-  const { start, end } = calcStartEnd(page)
+  const { start, end } = calcStartEnd(page, count)
 
   const incrementPage = () => page === maxPages ? setPage(page) : setPage(page + 1)
 
@@ -22,7 +27,7 @@ const ResultsMetainfo = ({ result, page, setPage, maxPages }) => {
 
   return (
     <div className="resultsMeta">
-      <p>Showing set <span className="bold">{start} - {end}</span> of <span className="bold">{count}</span> results on Github.</p>
+      <p>Set <span className="bold">{start} - {end}</span> of <span className="bold">{count}</span> total matches on Github.</p>
       { maxPages > 1 && <div className="paginationControls">
         <button disabled={result.fetching || page === 1} className="paginationButton" onClick={decrementPage}>Prev 100</button>
         <button disabled={result.fetching || page === maxPages} className="paginationButton" onClick={incrementPage}>Next 100</button>
