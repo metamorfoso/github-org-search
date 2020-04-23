@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-import { useDebounce } from 'use-debounce'
+import React from 'react'
 import * as R from 'ramda'
 
 import { OrganizationList } from './OrganizationList'
 import { OrganizationsLoading } from './OrganizationsLoading'
-import { FilterResults } from './FilterResults'
 
 import './index.css'
 
@@ -16,17 +14,10 @@ const filterBy = (key, value) => (org) => {
   }
 }
 
-const Result = ({ result }) => {
-  const [showFilters, setShowFilters] = useState(false)
-  const toggleShowFilters = () => setShowFilters(!showFilters)
-  const [locationFilter, setLocationFilter] = useState('')
-  const onLocationFilterChange = (event) => setLocationFilter(event.target.value)
-  const [websiteFilter, setWebsiteFilter] = useState('')
-  const onWebsiteFilterChange = (event) => setWebsiteFilter(event.target.value)
-  const [debouncedLocation] = useDebounce(locationFilter, 250)
-  const [debouncedWebsite] = useDebounce(websiteFilter, 250)
-
+const Result = ({ result, filters }) => {
   const { data, fetching, error } = result
+
+  const { location, website } = filters
 
   if (!data && !fetching && !error) {
     return null
@@ -40,32 +31,16 @@ const Result = ({ result }) => {
     )
   }
 
-  const { userCount } = data.search
-
   const { edges } = data.search
 
   const organizations = R.compose(
-    R.filter(filterBy('websiteUrl', debouncedWebsite)),
-    R.filter(filterBy('location', debouncedLocation)),
+    R.filter(filterBy('websiteUrl', website)),
+    R.filter(filterBy('location', location)),
     R.map((edge) => edge.node)
   )(edges)
 
   return (
     <div className="results">
-      <div className="resultsMeta">
-        Retrieved <span className="bold">{edges.length}</span> of <span className="bold">{userCount}</span> results on Github.
-      </div>
-      <button className="filterToggle" onClick={toggleShowFilters}>{showFilters ? "Cancel Filters" : "Filter This Set" }</button>
-      {
-        showFilters
-          ? <FilterResults
-              location={locationFilter}
-              onLocationChange={onLocationFilterChange}
-              website={websiteFilter}
-              onWebsiteChange={onWebsiteFilterChange}
-            />
-          : null
-       }
       <OrganizationList organizations={organizations} />
     </div>
   )
