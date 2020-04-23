@@ -19,12 +19,18 @@ const notEqual = R.compose(
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState(undefined)
   const [githubPageInfo, setGithubPageInfo] = useState({
-    startCursor: null,
     endCursor: null
   })
-  const [page, setPage] = useState(1)
+  const [targetPage, setPage] = useState(1)
   const [knownCursors, setKnownCursors] = useState([])
-  const [targetCursor, setTargetCursor] = useState(undefined)
+
+  /*
+  Known cursors are saved after a page (aka set of results) is loaded.
+  The cursor for the first page/set would not be saved, while the
+  cursor for the second page/set would be saved at index 0.
+  Hence index is analogous to page number minus 2.
+  */
+  const afterCursor = knownCursors[targetPage - 2]
 
   const [filters, setFilters] = useState({
     location: '',
@@ -37,10 +43,12 @@ const Search = () => {
     query: orgQuery,
     variables: {
       searchQuery: `${searchQuery} type:org`,
-      afterCursor: targetCursor
+      afterCursor
     },
     pause: !searchQuery
   })
+
+  let maxPages = 1
 
   if (result.data && result.data.search && result.data.search.pageInfo) {
     if (notEqual(result.data.search.pageInfo, githubPageInfo)) {
@@ -50,11 +58,11 @@ const Search = () => {
       })
     }
 
-    const pagesPossible = Math.ceil(result.data.search.userCount / 100)
+    maxPages = Math.ceil(result.data.search.userCount / 100)
 
-    if (page <= pagesPossible && page > (knownCursors.length + 1)) {
+    // populate known cursors when first requesting new sets
+    if (targetPage <= maxPages && targetPage - 1 > knownCursors.length) {
       setKnownCursors([...knownCursors, githubPageInfo.endCursor])
-      setTargetCursor(githubPageInfo.endCursor)
     }
   }
 
@@ -62,7 +70,7 @@ const Search = () => {
     <div>
       <SearchBox onSubmit={setSearchQuery} fetching={result.fetching} />
       <DontRenderIfNoResult result={result}>
-        <ResultsMetainfo result={result} setPage={setPage} page={page} />
+        <ResultsMetainfo result={result} setPage={setPage} page={targetPage} maxPages={maxPages} />
         <FilterInput filters={filters} setFilters={setFilters} />
       </DontRenderIfNoResult>
       <Result result={result} filters={debouncedFilters} />

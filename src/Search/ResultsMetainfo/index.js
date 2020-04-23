@@ -11,20 +11,22 @@ const calcStartEnd = (page) => {
   }
 }
 
-const ResultsMetainfo = ({ result, page, setPage }) => {
+const ResultsMetainfo = ({ result, page, setPage, maxPages }) => {
   const { userCount: count } = result.data.search
 
   const { start, end } = calcStartEnd(page)
 
-  const incrementPage = (event) => {
-    event.preventDefault()
-    setPage(page + 1)
-  }
+  const incrementPage = () => page === maxPages ? setPage(page) : setPage(page + 1)
+
+  const decrementPage = () => page === 1 ? setPage(1) : setPage(page - 1)
 
   return (
     <div className="resultsMeta">
       <p>Showing set <span className="bold">{start} - {end}</span> of <span className="bold">{count}</span> results on Github.</p>
-      <button onClick={incrementPage}>Request Next 100</button>
+      { maxPages > 1 && <div className="paginationControls">
+        <button className="paginationButton" onClick={decrementPage}>Prev 100</button>
+        <button className="paginationButton" onClick={incrementPage}>Next 100</button>
+      </div>}
     </div>
   )
 }
