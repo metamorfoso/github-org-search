@@ -1,8 +1,9 @@
-const orgQuery = `query orgSearch($searchQuery: String!) {
+const orgQuery = `query orgSearch($searchQuery: String! $afterCursor: String) {
   search(
     query: $searchQuery
     type: USER,
-    first: 100
+    first: 100,
+    after: $afterCursor
   ) {
     userCount
     pageInfo {
