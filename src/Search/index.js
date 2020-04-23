@@ -24,6 +24,14 @@ const Search = () => {
   const [targetPage, setPage] = useState(1)
   const [knownCursors, setKnownCursors] = useState([])
 
+  const onSearchSubmit = (query) => {
+    setPage(1)
+    setKnownCursors([])
+    setGithubPageInfo({ endCursor: null })
+
+    return setSearchQuery(query)
+  }
+
   /*
   Known cursors are saved after a page (aka set of results) is loaded.
   The cursor for the first page/set would not be saved, while the
@@ -68,7 +76,7 @@ const Search = () => {
 
   return (
     <div>
-      <SearchBox onSubmit={setSearchQuery} fetching={result.fetching} />
+      <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
       <DontRenderIfNoResult result={result}>
         <ResultsMetainfo result={result} setPage={setPage} page={targetPage} maxPages={maxPages} />
         <FilterInput filters={filters} setFilters={setFilters} />
