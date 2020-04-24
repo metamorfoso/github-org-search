@@ -18,5 +18,6 @@ App for searching organizations on Github.
       - [after search] --> "showing N results of T, click to get the next set of M"
       - [when search finished or user satisfied] --> "filter the results"
 - tooltip to explain why user has to request sets one by one
-- OAuth authentication for each user (I don't wanna deal with my precious token...)
-  - need a server for this
+- [x] OAuth authentication for each user (I don't wanna deal with my precious token...)
+  - [x] need a server for this
+  - include a link to review access (see https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#directing-users-to-review-their-access )
