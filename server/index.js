@@ -1,12 +1,16 @@
+require('dotenv').config()
+
+const path = require('path')
 const express = require('express')
 const uuid4 = require('uuid').v4
 
-const APP_URL = process.env.APP_URL || 'http://127.0.0.1:3000'
-const SERVER_URL = process.env.SERVER_URL || 'http://127.0.0.1'
-const SERVER_PORT = process.env.SERVER_PORT || 4000
-
-const CLIENT_ID = process.env.CLIENT_ID
-const CLIENT_SECRET = process.env.CLIENT_SECRET
+const {
+  APP_URL,
+  SERVER_URL,
+  SERVER_PORT,
+  CLIENT_ID,
+  CLIENT_SECRET
+} = require('./config')
 
 const credentials = {
   client: {
@@ -42,6 +46,10 @@ const handleAuthCallback = (oauth2, startingState) => async (req, res) => {
   }
 }
 
+const handleRoot = (_, res) => {
+  return res.sendFile(path.join(__dirname, 'build', 'html.index'))
+}
+
 const server = () => {
   const app = express()
 
@@ -54,6 +62,11 @@ const server = () => {
     scope: 'read:org',
     state
   })
+
+  if (process.env.NODE_ENV !== 'development') {
+    app.use(express.static(path.join(__dirname, 'build')))
+    app.get('/', handleRoot)
+  }
 
   app.get('/auth', handleAuth(authorizationUri))
   app.get('/authCallback', handleAuthCallback(oauth2, state))
