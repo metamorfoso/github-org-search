@@ -1,9 +1,11 @@
 import React from 'react'
+import { v4 as uuid4 } from 'uuid'
 
 const URL = process.env.URL // netlify will inject this automatically
 const AUTHCALLBACK_PATH = process.env.REACT_APP_AUTHCALLBACK_PATH
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 
+const state = uuid4()
 const redirect_uri = `${URL}${AUTHCALLBACK_PATH}`
 
 const authorizationUri = process.env.NODE_ENV === 'development'
