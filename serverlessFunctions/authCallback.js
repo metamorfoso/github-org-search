@@ -22,6 +22,7 @@ exports.handler = async (event) => {
       },
       method: 'POST',
       body: JSON.stringify({
+        grant_type: 'authorization_code',
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code
