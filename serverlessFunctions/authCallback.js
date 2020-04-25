@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+const FormData = require('form-data')
 
 const {
   URL: APP_URL, // netlify injects this automatically
@@ -15,18 +16,19 @@ exports.handler = async (event) => {
   console.log({ state })
 
   try {
+    const form = new FormData()
+    form.append('grant_type', 'authorization_code')
+    form.append('client_id', REACT_APP_CLIENT_ID)
+    form.append('client_secret', CLIENT_SECRET)
+    form.append('code', code)
+
     const res = await fetch('https://github.com/login/oauth/access_token', {
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       method: 'POST',
-      body: JSON.stringify({
-        grant_type: 'authorization_code',
-        client_id: REACT_APP_CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-        code
-      })
+      body: form
     })
 
     const resJson = await res.json()
