@@ -9,10 +9,8 @@ const {
 exports.handler = async (event) => {
   const { code, state } = event.queryStringParameters
 
-  console.log({ APP_URL })
-
   try {
-    await fetch('https://github.com/login/oauth/access_token', {
+    const res = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       body: JSON.stringify({
         client_id: REACT_APP_CLIENT_ID,
@@ -22,6 +20,20 @@ exports.handler = async (event) => {
         redirect_uri: APP_URL
       })
     })
+
+    const resJson = await res.json()
+
+    console.log({resJson})
+
+    const { access_token } = resJson
+
+    return {
+      statusCode: 301,
+      headers: {
+        Location: `${APP_URL}?access_token=${access_token}`
+      },
+      body: ''
+    }
   } catch (error) {
     return {
       statusCode: 500,
