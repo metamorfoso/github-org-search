@@ -8,6 +8,7 @@ const {
 } = process.env
 
 exports.handler = async (event) => {
+  console.log('Running /authCallback handler...')
   const { code, state } = event.queryStringParameters
 
   console.log({ REACT_APP_CLIENT_ID })
@@ -38,7 +39,7 @@ exports.handler = async (event) => {
     const { access_token } = resJson
 
     if (!access_token) {
-      throw new Error(`Failed to find access_token in response from Github: ${resJson}`)
+      throw new Error(`Failed to find access_token in response from Github: ${JSON.stringify(resJson)}`)
     }
 
     return {
