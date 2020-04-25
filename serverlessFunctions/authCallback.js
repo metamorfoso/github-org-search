@@ -17,7 +17,8 @@ exports.handler = async (event) => {
   try {
     const res = await fetch('https://github.com/login/oauth/access_token', {
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
       method: 'POST',
       body: JSON.stringify({
