@@ -39,7 +39,7 @@ const handleAuthCallback = (oauth2, startingState) => async (req, res) => {
   try {
     const token = await oauth2.authorizationCode.getToken({ code })
 
-    return res.redirect(`${APP_URL}?token=${token.access_token}`)
+    return res.redirect(`${APP_URL}?access_token=${token.access_token}`)
   } catch (error) {
     console.error('Failed to get access token:', error.message)
     return res.status(500).json('Authentication failed')
@@ -63,7 +63,7 @@ const server = () => {
     state
   })
 
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.DEPLOYMENT === 'serverless' || process.env.NODE_ENV !== 'development') {
     app.use(express.static(path.join(__dirname, 'build')))
     app.get('/', handleRoot)
   }

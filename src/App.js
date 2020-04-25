@@ -11,7 +11,7 @@ const tokenFromQuerystring = R.compose(
   R.split('='),
   R.last,
   R.takeWhile((value) => {
-    return value.includes('token=')
+    return value.includes('access_token=')
   }),
   R.split('&'),
   R.last,
