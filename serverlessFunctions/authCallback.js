@@ -9,6 +9,8 @@ const {
 exports.handler = async (event) => {
   const { code, state } = event.queryStringParameters
 
+  console.log({ APP_URL })
+
   try {
     await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
@@ -20,10 +22,6 @@ exports.handler = async (event) => {
         redirect_uri: APP_URL
       })
     })
-
-    return {
-      statusCode: 200
-    }
   } catch (error) {
     return {
       statusCode: 500,
