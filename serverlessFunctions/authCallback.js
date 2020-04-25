@@ -11,13 +11,16 @@ exports.handler = async (event) => {
 
   try {
     const res = await fetch('https://github.com/login/oauth/access_token', {
+      headers: {
+        Accept: 'application/json'
+      },
       method: 'POST',
       body: JSON.stringify({
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code,
         state,
-        redirect_uri: APP_URL
+        // redirect_uri: APP_URL
       })
     })
 
