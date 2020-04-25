@@ -9,6 +9,8 @@ const {
 exports.handler = async (event) => {
   const { code, state } = event.queryStringParameters
 
+  console.log({ REACT_APP_CLIENT_ID })
+  console.log({ CLIENT_SECRET: CLIENT_SECRET != null ? 'exists...' : 'does not exit' })
   console.log({ code })
   console.log({ state })
 
@@ -21,8 +23,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
-        code,
-        state
+        code
       })
     })
 
@@ -47,7 +48,7 @@ exports.handler = async (event) => {
     console.error(error)
     return {
       statusCode: 500,
-      body: error.message
+      body: 'Something went wrong with the oauth flow.'
     }
   }
 }
