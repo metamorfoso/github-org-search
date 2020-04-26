@@ -46,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Github Org Search</h1>
+        <h1>Search Github Orgs</h1>
       </header>
       {
         client
