@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const FormData = require('form-data')
 
 const  { Encoding, encodingModeEnum } = require('simple-oauth2/lib/request-options/encoding')
 
@@ -19,27 +18,26 @@ exports.handler = async (event) => {
   console.log({ state })
 
   try {
-    const form = new FormData()
-    form.append('grant_type', 'authorization_code')
-    form.append('code', code)
+    const body = `grant_type=authorization_code&code=${code}`
 
     const encoding = new Encoding(encodingModeEnum.STRICT)
 
     const credentials = encoding.getAuthorizationHeaderToken(REACT_APP_CLIENT_ID, CLIENT_SECRET)
 
-    const res = await fetch('https://github.com/login/oauth/access_token', {
+    const fetchResponse = await fetch('https://github.com/login/oauth/access_token', {
       headers: {
         Accept: 'application/json',
         Authorization: `Basic ${credentials}`,
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': body.length
       },
       method: 'POST',
-      body: form
+      body
     })
 
-    const resJson = await res.json()
+    const resJson = await fetchResponse.json()
 
-    console.log({resJson})
+    console.log({ resJson })
 
     const { access_token } = resJson
 
