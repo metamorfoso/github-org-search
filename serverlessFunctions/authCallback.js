@@ -1,6 +1,8 @@
 const fetch = require('node-fetch')
 const FormData = require('form-data')
 
+const  { Encoding, encodingModeEnum } = require('simple-oauth2/lib/request-options/encoding')
+
 const {
   URL: APP_URL, // netlify injects this automatically
   REACT_APP_CLIENT_ID,
@@ -19,13 +21,16 @@ exports.handler = async (event) => {
   try {
     const form = new FormData()
     form.append('grant_type', 'authorization_code')
-    form.append('client_id', REACT_APP_CLIENT_ID)
-    form.append('client_secret', CLIENT_SECRET)
     form.append('code', code)
+
+    const encoding = new Encoding(encodingModeEnum.STRICT)
+
+    const credentials = encoding.getAuthorizationHeaderToken(REACT_APP_CLIENT_ID, CLIENT_SECRET)
 
     const res = await fetch('https://github.com/login/oauth/access_token', {
       headers: {
         Accept: 'application/json',
+        Authorization: `Basic ${credentials}`,
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       method: 'POST',
