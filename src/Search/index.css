@@ -7,3 +7,9 @@
 .searchContent {
   width: 600px;
 }
+
+@media (max-width: 480px) {
+  .searchContent {
+    width: 90%;
+  }
+}

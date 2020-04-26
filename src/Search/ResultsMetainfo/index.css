@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+@media (max-width: 480px) {
+  .resultsInfo {
+     font-size: 14px;
+  }
+}
+
 .paginationControls {
   width: 300px;
   margin-top: 30px;

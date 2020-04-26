@@ -1,8 +1,10 @@
 .org {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   min-height: 100px;
+  padding: 10px;
 }
 
 .avatarImg {
@@ -13,6 +15,10 @@
 .primary {
   font-weight: 700;
   margin-bottom: 6px;
+}
+
+.name {
+  max-width: 25ch;
 }
 
 .secondary {
@@ -39,4 +45,24 @@
 .openInNewIcon {
   height: 12px;
   position: relative;
+}
+
+@media (max-width: 480px) {
+  .name {
+    max-width: 20ch;
+  }
+  .description {
+    display: none;
+  }
+  .info2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .website {
+    max-width: 15ch;
+  }
+  .location {
+    max-width: 15ch;
+  }
 }

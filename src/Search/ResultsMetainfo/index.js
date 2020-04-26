@@ -27,7 +27,7 @@ const ResultsMetainfo = ({ result, page, setPage, maxPages }) => {
 
   return (
     <div className="resultsMeta">
-      <p>Set <span className="bold">{start} - {end}</span> of <span className="bold">{count}</span> total matches on Github.</p>
+      <p className="resultsInfo">Set <span className="bold">{start}-{end}</span> of <span className="bold">{count}</span> total matches on GitHub.</p>
       { maxPages > 1 && <div className="paginationControls">
         <button disabled={result.fetching || page === 1} className="paginationButton" onClick={decrementPage}>Prev 100</button>
         <button disabled={result.fetching || page === maxPages} className="paginationButton" onClick={incrementPage}>Next 100</button>

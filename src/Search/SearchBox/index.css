@@ -29,7 +29,12 @@
 }
 
 .searchInput {
-  width: 250px;
+  width: 200px;
+}
+@media (min-width: 480px) {
+  .searchInput {
+    width: 250px;
+  }
 }
 
 .searchSubmit {
