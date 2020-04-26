@@ -2,18 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.searchAlignmentWrapper {
+  text-align: left;
 }
 
 .searchForm {
-  width: 100%;
-  padding: 50px 0;
-  border-bottom: 1px solid lightgray;
+  margin-top: 50px;
+}
+
+.githubAccessReview {
+  margin: 10px 0 40px 0;
+  font-size: 12px;
+  color: grey;
 }
 
 .searchFormElement {
   height: 50px;
   padding: 0 10px;
-  margin: 0 10px;
   box-sizing: border-box;
   border: 1px solid grey;
   border-radius: 3px;
@@ -26,6 +34,7 @@
 
 .searchSubmit {
   width: 100px;
+  margin-left: 10px;
   cursor: pointer;
   color: white;
   font-weight: 600;
