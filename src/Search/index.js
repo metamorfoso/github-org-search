@@ -3,13 +3,16 @@ import * as R from 'ramda'
 import { useQuery } from 'urql'
 import { useDebounce } from 'use-debounce'
 
-import { DontRenderIfNoResult } from '../components/DontRenderIfNoResult'
+import { ErrorWhenNoResult } from './ErrorWhenNoResult'
 import { FilterInput } from './FilterInput'
 import { Result } from './Result'
+import { ResultsLoading } from './ResultsLoading'
 import { ResultsMetainfo } from './ResultsMetainfo'
 import { SearchBox } from './SearchBox'
 
 import { orgQuery } from '../graphql/orgQuery'
+
+import './index.css'
 
 const notEqual = R.compose(
   R.not,
@@ -75,13 +78,16 @@ const Search = () => {
   }
 
   return (
-    <div>
-      <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
-      <DontRenderIfNoResult result={result}>
-        <ResultsMetainfo result={result} setPage={setPage} page={targetPage} maxPages={maxPages} />
-        <FilterInput filters={filters} setFilters={setFilters} />
-      </DontRenderIfNoResult>
-      <Result result={result} filters={debouncedFilters} />
+    <div className="searchContainer">
+      <div className="searchContent">
+        <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
+        <ResultsLoading fetching={result.fetching} />
+        <ErrorWhenNoResult result={result}>
+          <ResultsMetainfo result={result} setPage={setPage} page={targetPage} maxPages={maxPages} />
+          <FilterInput filters={filters} setFilters={setFilters} />
+          <Result result={result} filters={debouncedFilters} />
+        </ErrorWhenNoResult>
+      </div>
     </div>
   )
 }

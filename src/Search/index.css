@@ -1,0 +1,9 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchContent {
+  width: 600px;
+}

@@ -2,7 +2,6 @@ import React from 'react'
 import * as R from 'ramda'
 
 import { OrganizationList } from './OrganizationList'
-import { OrganizationsLoading } from './OrganizationsLoading'
 
 import './index.css'
 
@@ -21,14 +20,6 @@ const Result = ({ result, filters }) => {
 
   if (!data && !fetching && !error) {
     return null
-  }
-
-  if (fetching) {
-    return (
-      <div className="results">
-        <OrganizationsLoading />
-      </div>
-    )
   }
 
   const { edges } = data.search
