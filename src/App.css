@@ -43,4 +43,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 600px;
+}
+
+@media (max-width: 615px) {
+  .container {
+    width: 90%;
+  }
 }

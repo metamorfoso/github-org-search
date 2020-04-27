@@ -26,10 +26,10 @@ const DownwardModal = ({ heading, children }) => {
     : <DownArrow />
 
   return (
-    <div>
+    <React.Fragment>
       <button className="toggleComponent" onClick={toggleShowComp}><span className="bold">{heading}</span> {arrow}</button>
       {showComp ? children : null}
-    </div>
+    </React.Fragment>
   )
 }
 

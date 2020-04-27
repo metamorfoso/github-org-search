@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   align-items: center;
   min-height: 100px;
+  padding: 5px;
 }
 
 .avatarImg {

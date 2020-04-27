@@ -5,20 +5,22 @@
 }
 
 .controls {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .paginationButton {
-  width: 145px;
+  width: 47%;
+  max-width: 145px;
   height: 30px;
   cursor: pointer;
   box-sizing: border-box;
   font-weight: 700;
   border: 1px solid grey;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   background-color: #545d8e;
 }

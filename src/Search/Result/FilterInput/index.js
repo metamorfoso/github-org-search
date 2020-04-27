@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
-import classnames from 'classnames'
+import React from 'react'
 
 import { DownwardModal } from '../../../components/DownwardModal'
 
 import './index.css'
 
 const FilterInput = ({ filters, setFilters }) => {
-
-  const [showFilterInput, setShowFilterInput] = useState(false)
-  const toggleShowFilterInput = () => setShowFilterInput(!showFilterInput)
-
   const onLocationChange = (event) => setFilters({
     ...filters,
     location: event.target.value
@@ -37,7 +32,7 @@ const FilterInput = ({ filters, setFilters }) => {
             <input className="filterInput" name="websiteFilter" type="text" value={filters.website} onChange={onWebsiteChange} />
           </div>
         </div>
-        <button className={classnames(['filterButton', 'clearFilters', !showFilterInput ? 'hide' : ''])} onClick={clearFilters}>Clear Filters</button>
+        <button className="clearFilters" onClick={clearFilters}>Clear Filters</button>
       </DownwardModal>
     </div>
   )

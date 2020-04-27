@@ -1,11 +1,5 @@
 .searchContent {
-  width: 600px;
-}
-
-@media (max-width: 615px) {
-  .searchContent {
-    width: 90%;
-  }
+  width: 100%;
 }
 
 .accessRightsCard {
