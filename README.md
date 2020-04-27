@@ -20,4 +20,12 @@ App for searching organizations on Github.
 - tooltip to explain why user has to request sets one by one
 - [x] OAuth authentication for each user (I don't wanna deal with my precious token...)
   - [x] need a server for this
-  - include a link to review access (see https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#directing-users-to-review-their-access )
+  - [x] include a link to review access (see https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#directing-users-to-review-their-access )
+- [] layout
+  - [x] mobile-friendly
+  - [x] re-style with "card" components
+  - [] overhaul filter controls
+- [] FAQ/info for user
+  - [] modal component for displaying this
+  - [] Why am I being asked for access to info on organizations I belong to? (GitHub's scope policy)
+  - [] Why can I only view results one set at a time?

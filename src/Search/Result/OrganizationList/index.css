@@ -1,6 +1,6 @@
 .orgList {
-  width: 100%;
   text-align: left;
+  border-top: 1px solid grey;
 }
 
 .listItem {

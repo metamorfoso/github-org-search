@@ -20,8 +20,16 @@
 }
 
 .card {
-  padding: 25px 0;
-  border-bottom: 1px solid lightgray;
+  /* sublte diver styles */
+  /* padding: 25px 0;
+  border-bottom: 1px solid lightgray; */
+
+  /* 'Raised' card styles */
+  margin: 25px 0;
+  padding: 25px 20px;
+  border-radius: 6px;
+  border: 1px solid lightgray;
+  box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.16);
 
   display: flex;
   flex-direction: column;
@@ -31,5 +39,6 @@
   padding: 50px 0;
 }
 .card.tight {
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }

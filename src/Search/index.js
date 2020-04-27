@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import * as R from 'ramda'
 import { useQuery } from 'urql'
-import { useDebounce } from 'use-debounce'
 
 import { AccessReviewLink } from './AccessReviewLink'
-import { ErrorWhenNoResult } from './ErrorWhenNoResult'
-import { FilterInput } from './FilterInput'
 import { Result } from './Result'
-import { ResultsLoading } from './ResultsLoading'
-import { ResultsMetainfo } from './ResultsMetainfo'
 import { SearchBox } from './SearchBox'
 
 import { orgQuery } from '../graphql/orgQuery'
@@ -27,29 +22,24 @@ const Search = () => {
   })
   const [targetPage, setPage] = useState(1)
   const [knownCursors, setKnownCursors] = useState([])
+  const [resultsCount, setResultsCount] = useState(0)
 
   const onSearchSubmit = (query) => {
     setPage(1)
     setKnownCursors([])
     setGithubPageInfo({ endCursor: null })
+    setResultsCount(0)
 
     return setSearchQuery(query)
   }
 
   /*
   Known cursors are saved after a page (aka set of results) is loaded.
-  The cursor for the first page/set would not be saved, while the
-  cursor for the second page/set would be saved at index 0.
-  Hence index is analogous to page number minus 2.
+  At the first page/set there would not be a cursor; for the second
+  page/set the cursor would be saved at index 0.
+  Hence index of target cursor is page number minus 2.
   */
   const afterCursor = knownCursors[targetPage - 2]
-
-  const [filters, setFilters] = useState({
-    location: '',
-    website: ''
-  })
-
-  const [debouncedFilters] = useDebounce(filters, 250)
 
   const [result] = useQuery({
     query: orgQuery,
@@ -61,6 +51,10 @@ const Search = () => {
   })
 
   let maxPages = 1
+
+  if (result.data && result.data.search && result.data.search.userCount && result.data.search.userCount !== resultsCount) {
+    setResultsCount(result.data.search.userCount)
+  }
 
   if (result.data && result.data.search && result.data.search.pageInfo) {
     if (notEqual(result.data.search.pageInfo, githubPageInfo)) {
@@ -78,16 +72,17 @@ const Search = () => {
     }
   }
 
+  const pagination = {
+    setPage,
+    targetPage,
+    maxPages
+  }
+
   return (
     <div className="searchContainer">
       <div className="searchContent">
         <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
-        <ResultsLoading fetching={result.fetching} />
-        <ErrorWhenNoResult result={result}>
-          <ResultsMetainfo result={result} setPage={setPage} page={targetPage} maxPages={maxPages} />
-          <FilterInput filters={filters} setFilters={setFilters} />
-          <Result result={result} filters={debouncedFilters} />
-        </ErrorWhenNoResult>
+        <Result count={resultsCount} result={result} pagination={pagination} />
         <AccessReviewLink />
       </div>
     </div>

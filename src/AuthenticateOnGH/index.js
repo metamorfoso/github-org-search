@@ -17,9 +17,9 @@ const authorizationUri = process.env.NODE_ENV === 'development'
 const AuthenticateOnGH = () => {
   return (
     <div className="authenticateOnGH">
-      <div className="authenticateCard">
+      <div className="authenticateCard card">
         <h2>Welcome</h2>
-        <a href={authorizationUri}>Please login with Github to continue.</a>
+        <a href={authorizationUri}>Please login with GitHub to continue.</a>
       </div>
     </div>
   )

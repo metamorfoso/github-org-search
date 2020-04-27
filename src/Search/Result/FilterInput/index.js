@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 
 import './index.css'
@@ -23,7 +23,7 @@ const FilterInput = ({ filters, setFilters }) => {
   })
 
   return (
-    <div className="filters card">
+    <div className="filtering">
       <button className="filterButton filterToggle" onClick={toggleShowFilterInput}>{showFilterInput ? "Hide Filters" : "Filter This Set"}</button>
       <div className={showFilterInput ? "filters" : "hide"}>
         <div className="filter">

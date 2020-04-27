@@ -6,7 +6,7 @@ import './index.css'
 
 const OrganizationList = ({ organizations }) => {
   return (
-    <ul className="orgList card tight">
+    <ul className="orgList">
       {organizations.map((org) => {
         return <li className="listItem" key={`org-${org.login}`}><Organization {...org} /></li>
       })}

@@ -1,7 +1,5 @@
-.filters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.filtering {
+  margin-top: 25px;
 }
 
 .filterButton {
@@ -23,6 +21,12 @@
 .filterToggle {
   font-weight: 700;
   border: 1px solid grey;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .clearFilters {

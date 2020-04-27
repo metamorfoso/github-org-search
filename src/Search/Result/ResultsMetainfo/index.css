@@ -1,0 +1,11 @@
+.resultsMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 615px) {
+  .resultsInfo {
+     font-size: 14px;
+  }
+}

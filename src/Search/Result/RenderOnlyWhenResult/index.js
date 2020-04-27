@@ -1,10 +1,8 @@
 import React from 'react'
 
-import './index.css'
-
-const ErrorWhenNoResult = ({ result, children }) => {
+const RenderOnlyWhenResult = ({ result, children }) => {
   if (result.error) {
-    return (<div className="error card">Something went wrong while searching Github...</div>)
+    return (<div className="card">Something went wrong while searching Github...</div>)
   }
 
   if (!result.data || !result.data.search || !result.data.search.edges || !result.data.search.userCount) {
@@ -15,5 +13,5 @@ const ErrorWhenNoResult = ({ result, children }) => {
 }
 
 export {
-  ErrorWhenNoResult
+  RenderOnlyWhenResult
 }
