@@ -2,21 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid lightgray;
-}
-
-.searchAlignmentWrapper {
-  text-align: left;
 }
 
 .searchForm {
-  margin-top: 50px;
-}
-
-.githubAccessReview {
-  margin: 10px 0 40px 0;
-  font-size: 12px;
-  color: grey;
 }
 
 .searchFormElement {
@@ -31,7 +19,7 @@
 .searchInput {
   width: 200px;
 }
-@media (min-width: 480px) {
+@media (min-width: 615px) {
   .searchInput {
     width: 250px;
   }

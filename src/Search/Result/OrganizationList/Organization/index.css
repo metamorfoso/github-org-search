@@ -28,7 +28,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 25ch;
+  max-width: 24ch;
 }
 
 .info2 {
@@ -47,7 +47,7 @@
   position: relative;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 615px) {
   .name {
     max-width: 20ch;
   }

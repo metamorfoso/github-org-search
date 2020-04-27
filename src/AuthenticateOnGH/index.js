@@ -1,6 +1,8 @@
 import React from 'react'
 import { v4 as uuid4 } from 'uuid'
 
+import './index.css'
+
 const URL = process.env.REACT_APP_URL
 const AUTHCALLBACK_PATH = process.env.REACT_APP_AUTHCALLBACK_PATH
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
@@ -14,8 +16,11 @@ const authorizationUri = process.env.NODE_ENV === 'development'
 
 const AuthenticateOnGH = () => {
   return (
-    <div>
-      <a href={authorizationUri}>Please login with Github to continue.</a>
+    <div className="authenticateOnGH">
+      <div className="authenticateCard">
+        <h2>Welcome</h2>
+        <a href={authorizationUri}>Please login with Github to continue.</a>
+      </div>
     </div>
   )
 }

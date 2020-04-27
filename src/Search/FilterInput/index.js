@@ -23,7 +23,7 @@ const FilterInput = ({ filters, setFilters }) => {
   })
 
   return (
-    <div className="filters">
+    <div className="filters card">
       <button className="filterButton filterToggle" onClick={toggleShowFilterInput}>{showFilterInput ? "Hide Filters" : "Filter This Set"}</button>
       <div className={showFilterInput ? "filters" : "hide"}>
         <div className="filter">

@@ -3,6 +3,7 @@ import * as R from 'ramda'
 import { useQuery } from 'urql'
 import { useDebounce } from 'use-debounce'
 
+import { AccessReviewLink } from './AccessReviewLink'
 import { ErrorWhenNoResult } from './ErrorWhenNoResult'
 import { FilterInput } from './FilterInput'
 import { Result } from './Result'
@@ -87,6 +88,7 @@ const Search = () => {
           <FilterInput filters={filters} setFilters={setFilters} />
           <Result result={result} filters={debouncedFilters} />
         </ErrorWhenNoResult>
+        <AccessReviewLink />
       </div>
     </div>
   )

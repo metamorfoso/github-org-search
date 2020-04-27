@@ -1,0 +1,32 @@
+.authenticateOnGH {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authenticateCard {
+  width: 600px;
+  height: 175px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  margin-top: 50px;
+  padding: 25px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+
+  /* Card */
+  /* border-radius: 6px;
+  border: 1px solid lightgray;
+  box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.16); */
+}
+
+@media (max-width: 480px) {
+  .authenticateCard {
+    width: 70%;
+  }
+}
