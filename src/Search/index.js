@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import * as R from 'ramda'
 import { useQuery } from 'urql'
 
-import { AccessReviewLink } from './AccessReviewLink'
+import { AccessReviewLink } from '../AccessReviewLink'
+import { FaqModal } from './FaqModal'
 import { Result } from './Result'
 import { SearchBox } from './SearchBox'
 
@@ -83,7 +84,10 @@ const Search = () => {
       <div className="searchContent">
         <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
         <Result count={resultsCount} result={result} pagination={pagination} />
-        <AccessReviewLink />
+        <div className="card accessRightsCard">
+          <AccessReviewLink>Review this app's access rights on GitHub.</AccessReviewLink>
+        </div>
+        <FaqModal />
       </div>
     </div>
   )

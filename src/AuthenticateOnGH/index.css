@@ -1,19 +1,9 @@
-.authenticateOnGH {
-  width: 100%;
-  height: 100%;
+.authenticate {
+  width: 600px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.authenticateCard {
-  width: 600px;
-  height: 175px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-
   margin-top: 50px;
 }
 
@@ -21,4 +11,17 @@
   .authenticateCard {
     width: 70%;
   }
+}
+
+.welcomeHeading {
+  margin-top: 25px;
+}
+
+.authLink {
+  margin: 25px 0;
+}
+
+.whyAccessWrapper {
+  text-align: left;
+  padding: 0 25px;
 }

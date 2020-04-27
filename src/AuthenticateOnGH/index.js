@@ -1,6 +1,9 @@
 import React from 'react'
 import { v4 as uuid4 } from 'uuid'
 
+import { DownwardModal } from '../components/DownwardModal'
+import { WhyAccess } from '../FAQ/WhyAccess'
+
 import './index.css'
 
 const URL = process.env.REACT_APP_URL
@@ -16,11 +19,14 @@ const authorizationUri = process.env.NODE_ENV === 'development'
 
 const AuthenticateOnGH = () => {
   return (
-    <div className="authenticateOnGH">
-      <div className="authenticateCard card">
-        <h2>Welcome</h2>
-        <a href={authorizationUri}>Please login with GitHub to continue.</a>
-      </div>
+    <div className="authenticate card">
+      <h2 className="welcomeHeading">Welcome</h2>
+      <a className="authLink" href={authorizationUri}>Please login with GitHub to continue.</a>
+      <DownwardModal heading={'Why?'}>
+        <div className="whyAccessWrapper">
+          <WhyAccess />
+        </div>
+      </DownwardModal>
     </div>
   )
 }
