@@ -80,7 +80,7 @@ const Search = () => {
   }
 
   return (
-    <div className="searchContainer">
+    <div className="container">
       <div className="searchContent">
         <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
         <Result count={resultsCount} result={result} pagination={pagination} />

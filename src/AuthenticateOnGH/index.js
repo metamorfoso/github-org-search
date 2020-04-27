@@ -19,14 +19,16 @@ const authorizationUri = process.env.NODE_ENV === 'development'
 
 const AuthenticateOnGH = () => {
   return (
-    <div className="authenticate card">
-      <h2 className="welcomeHeading">Welcome</h2>
-      <a className="authLink" href={authorizationUri}>Please login with GitHub to continue.</a>
-      <DownwardModal heading={'Why?'}>
-        <div className="whyAccessWrapper">
-          <WhyAccess />
-        </div>
-      </DownwardModal>
+    <div className="container">
+      <div className="authenticate card">
+        <h2 className="welcomeHeading">Welcome</h2>
+        <a className="authLink" href={authorizationUri}>Please login with GitHub to continue.</a>
+        <DownwardModal heading={'Why?'}>
+          <div className="whyAccessWrapper">
+            <WhyAccess />
+          </div>
+        </DownwardModal>
+      </div>
     </div>
   )
 }

@@ -1,14 +1,13 @@
 .authenticate {
-  width: 600px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 600px;
   margin-top: 50px;
 }
 
-@media (max-width: 480px) {
-  .authenticateCard {
+@media only screen and (max-width: 615px) {
+  .authenticate {
     width: 70%;
   }
 }
