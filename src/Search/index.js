@@ -84,9 +84,9 @@ const Search = () => {
       <div className="searchContent">
         <SearchBox onSubmit={onSearchSubmit} fetching={result.fetching} />
         <Result count={resultsCount} result={result} pagination={pagination} />
-        <div className="card accessRightsCard">
+        {process.env.REACT_APP_DIRECT_TOKEN ? null : <div className="card accessRightsCard">
           <AccessReviewLink>Review this app's access rights on GitHub.</AccessReviewLink>
-        </div>
+        </div>}
         <FaqModal />
       </div>
     </div>

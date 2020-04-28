@@ -8,11 +8,11 @@ import './index.css'
 const FAQ = () => {
   return (
     <div className="faq">
-      <div className="qaPair">
+      {process.env.REACT_APP_DIRECT_TOKEN ? null : <div className="qaPair">
         <p className="question bold">How do I revoke the access I've granted for this app?</p>
         <p className="answer">You can <AccessReviewLink noLinkStyle={false} >review the access rights on GitHub.</AccessReviewLink></p>
-      </div>
-      <WhyAccess />
+      </div>}
+      {process.env.REACT_APP_DIRECT_TOKEN ? null : <WhyAccess />}
       <div className="qaPair">
         <p className="question bold">Why can I only view 100 results at a time?</p>
         <p className="answer">

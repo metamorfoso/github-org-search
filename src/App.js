@@ -6,6 +6,8 @@ import './App.css';
 import { AuthenticateOnGH } from './AuthenticateOnGH'
 import { Search } from './Search'
 
+const DIRECT_TOKEN = process.env.REACT_APP_DIRECT_TOKEN
+
 const tokenFromQuerystring = R.compose(
   R.last,
   R.split('='),
@@ -19,7 +21,7 @@ const tokenFromQuerystring = R.compose(
 )
 
 function App() {
-  let token = window.localStorage.getItem('github-org-search_API_token')
+  let token = DIRECT_TOKEN || window.localStorage.getItem('github-org-search_API_token')
 
   if ((!token || token.length === 0) && window.location.search.length > 0) {
     token = tokenFromQuerystring(window.location.search)

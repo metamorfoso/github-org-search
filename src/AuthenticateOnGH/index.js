@@ -26,6 +26,7 @@ const AuthenticateOnGH = () => {
         <DownwardModal heading={'Why?'}>
           <div className="whyAccessWrapper">
             <WhyAccess />
+            <p className="reassurance bold">You will be able to review and revoke access at any point.</p>
           </div>
         </DownwardModal>
       </div>
